@@ -14,7 +14,8 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 function Analytics() {
-  const { lendAmount, borrowAmount } = useSubGraph();
+  const { lendAmount, borrowAmount, totalBorrowAmount, totalLendAmount } =
+    useSubGraph();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -78,6 +79,38 @@ function Analytics() {
                         </div>
                       ) : (
                         `$${borrowAmount}`
+                      )}
+                    </div>
+                    <div className="flex flex-col space-y-1.5"></div>
+                  </div>
+                </form>
+              </CardContent>
+              <CardFooter className="flex justify-between"></CardFooter>
+            </Card>
+            <Card className="w-[350px]">
+              <CardHeader>
+                <CardTitle>
+                  Total funds Lent and Borrowed on the protocol
+                </CardTitle>
+                <CardDescription></CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form>
+                  <div className="grid w-full items-center gap-4">
+                    <div className="flex flex-col space-y-1.5">
+                      {loading ? (
+                        <div className="flex items-center space-x-4">
+                          <Skeleton className="h-12 w-12 rounded-full" />
+                          <div className="space-y-2">
+                            <Skeleton className="h-4 w-[250px]" />
+                            <Skeleton className="h-4 w-[200px]" />
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div>{`Total Borrowed: $${totalBorrowAmount}`}</div>
+                          <div>{`Total Lent: $${totalLendAmount}`}</div>
+                        </div>
                       )}
                     </div>
                     <div className="flex flex-col space-y-1.5"></div>

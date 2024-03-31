@@ -6,6 +6,8 @@ export const useSubGraph = () => {
   const { address: account } = useAccount();
   const [lendAmount, setLendAmount] = useState(0);
   const [borrowAmount, setBorrowAmount] = useState(0);
+  const [totalLendAmount, setTotalLendAmount] = useState(0);
+  const [totalBorrowAmount, setTotalBorrowAmount] = useState(0);
   //   const tokensQuery = `
   //  query($account:String)
   //   {
@@ -29,6 +31,21 @@ query($account:String)
    amount
    provide
  }
+}
+`;
+  const tokensQuery2 = `
+{
+    liquidityProvideds {
+        id
+        provide
+        amount
+        blockNumber
+      }
+      tokensBorroweds {
+        amount
+        borrower
+        id
+      }
 }
 `;
   const client = new ApolloClient({
@@ -71,10 +88,44 @@ query($account:String)
       .catch((err) => {
         console.log("Error fetching data: ", err);
       });
+    client
+      .query({
+        query: gql(tokensQuery2),
+      })
+      .then((data) => {
+        console.log("Subgraph data2: ", data);
+        setTotalBorrowAmount(
+          data.data.tokensBorroweds.reduce(
+            (accumulator: number, currentValue: any) => {
+              return (
+                accumulator +
+                Math.trunc(Number(ethers.formatEther(currentValue.amount)))
+              );
+            },
+            0
+          )
+        );
+        setTotalLendAmount(
+          data.data.liquidityProvideds.reduce(
+            (accumulator: number, currentValue: any) => {
+              return (
+                accumulator +
+                Math.trunc(Number(ethers.formatEther(currentValue.amount)))
+              );
+            },
+            0
+          )
+        );
+      })
+      .catch((err) => {
+        console.log("Error fetching data: ", err);
+      });
   }, [account]);
 
   return {
     lendAmount: lendAmount,
     borrowAmount: borrowAmount,
+    totalLendAmount: totalLendAmount,
+    totalBorrowAmount: totalBorrowAmount,
   };
 };
