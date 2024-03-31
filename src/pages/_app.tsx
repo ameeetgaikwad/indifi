@@ -40,7 +40,7 @@ const AvailSepoila = {
   id: 202402021700,
   name: "OP Avail Sepolia Testnet",
   iconUrl:
-    "https://www.availproject.org/_next/static/media/logo_large.80d5666f.png",
+    "/lumiologo.png",
   iconBackground: "#fff",
   nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
   rpcUrls: {
