@@ -67,7 +67,7 @@ function Application() {
       functionName: "approve",
       args: [
         contracts.IndiFi[chainId as ChainId] as Address,
-        ethers.parseEther(lendAmount?.toString() as string),
+        ethers.parseEther(repayAmount?.toString() as string),
       ],
     });
     setTimeout(() => {
