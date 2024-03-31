@@ -144,7 +144,7 @@ function Application() {
                   <div>
                     <Input
                       type="number"
-                      placeholder=""
+                      placeholder="10 USDT"
                       className="w-[35%] mb-1"
                       inputMode="numeric"
                       value={repayAmount as number}
