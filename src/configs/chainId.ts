@@ -4,4 +4,5 @@ export enum ChainId {
   AVAIL = 202402021700,
   MUMBAI = 80001,
   SEPOLIA = 11155111,
+  BLUEBERRY = 1442,
 }

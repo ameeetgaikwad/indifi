@@ -8,7 +8,7 @@ import {
   Chain,
 } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { polygonMumbai, sepolia, polygonAmoy } from "wagmi/chains";
+import { polygonMumbai, sepolia, polygonZkEvmTestnet } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const PolygonCardona = {
@@ -91,7 +91,7 @@ const Lumio = {
 const config = getDefaultConfig({
   appName: "Indifi",
   projectId: "2455679236dbec241fec394feb4fe62d",
-  chains: [PolygonCardona, AvailSepoila, Lumio, sepolia],
+  chains: [PolygonCardona, AvailSepoila, Lumio, sepolia, polygonZkEvmTestnet],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 const queryClient = new QueryClient();

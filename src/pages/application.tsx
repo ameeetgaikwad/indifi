@@ -10,7 +10,12 @@ import {
 import { Input } from "@/components/ui/input";
 
 import Head from "next/head";
-import { useChainId, useWriteContract, useAccount } from "wagmi";
+import {
+  useChainId,
+  useWriteContract,
+  useAccount,
+  useReadContract,
+} from "wagmi";
 import { useEffect, useState } from "react";
 import { indifyABI, usdtABI } from "@/abis/indifyABI";
 import { contracts } from "@/configs/contracts";
@@ -74,9 +79,8 @@ function Application() {
       });
     }, 8000);
   }
-  useEffect(() => {
-    setInterval(() => {}, 3000);
-  }, []);
+
+  useEffect(() => {}, []);
   return (
     <>
       <Head>
@@ -124,7 +128,6 @@ function Application() {
                         }
                         value={borrowAmount as number}
                       />
-                      <p>max:</p>
                     </div>
 
                     <Button
