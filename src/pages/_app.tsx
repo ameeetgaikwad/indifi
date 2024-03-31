@@ -40,7 +40,7 @@ const AvailSepoila = {
   id: 202402021700,
   name: "OP Avail Sepolia Testnet",
   iconUrl:
-    "/lumiologo.png",
+    "https://www.availproject.org/_next/static/media/logo_large.80d5666f.png",
   iconBackground: "#fff",
   nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
   rpcUrls: {
@@ -65,8 +65,7 @@ const AvailSepoila = {
 const Lumio = {
   id: 9990,
   name: "Lumio L2 Testnet",
-  iconUrl:
-    "https://c8.alamy.com/zooms/9/ca8385ccae4b473490b2f3c035cc6a9f/2g0r7je.jpg",
+  iconUrl: "/lumiologo.png",
   iconBackground: "#fff",
   nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
   rpcUrls: {
