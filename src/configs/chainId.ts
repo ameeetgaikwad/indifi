@@ -1,0 +1,7 @@
+export enum ChainId {
+  POLYGON_ZKEVM = 2442,
+  LUMIO = 9990,
+  AVAIL = 202402021700,
+  MUMBAI = 80001,
+  SEPOLIA = 11155111,
+}

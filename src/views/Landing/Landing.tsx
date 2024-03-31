@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function Landing() {
   const [anonAadhaar] = useAnonAadhaar();
@@ -13,6 +14,9 @@ function Landing() {
   }, [anonAadhaar.status]);
   return (
     <>
+      <Head>
+        <title>Indifi</title>
+      </Head>
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center md:gap-8 md:px-6">
           <div className="space-y-3">
@@ -25,16 +29,17 @@ function Landing() {
             </p>
           </div>
           <div className="flex flex-col gap-2 min-[400px]:flex-row">
-            <div className="inline-flex h-12 items-center justify-center rounded-md border px-8 text-sm font-medium transition-colors  focus-visible:outline-none focus-visible:ring-1  disabled:pointer-events-none text-white">
-              <p className="mr-2">Authenticate using Anon Aadhaar</p>
+            <div className="inline-flex h-12 items-center justify-center rounded-md px-8 text-sm font-medium transition-colors  focus-visible:outline-none focus-visible:ring-1  disabled:pointer-events-none text-white">
+              <p className="">Authenticate using Anon Aadhaar</p>
             </div>
             <div onClick={() => {}}></div>
             <div
               onClick={() => {
                 setTimeout(() => {
-                  rounter.push("/app");
-                }, 2000);
+                  rounter.push("/application");
+                }, 5000);
               }}
+              className="flex flex-row items-center -ml-9"
             >
               <LogInWithAnonAadhaar nullifierSeed={1234} />
             </div>
