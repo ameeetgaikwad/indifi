@@ -99,7 +99,7 @@ function Application() {
                   <div className="mb-2">
                     <Input
                       type="number"
-                      placeholder=""
+                      placeholder="10 USDT"
                       className="w-[70%] mb-1"
                       inputMode="numeric"
                       value={lendAmount as number}
@@ -120,7 +120,7 @@ function Application() {
                     <div className="flex flex-row">
                       <Input
                         type="number"
-                        placeholder=""
+                        placeholder="10 USDT"
                         className="w-[70%] mb-1 mr-1"
                         inputMode="numeric"
                         onChange={(e) =>
