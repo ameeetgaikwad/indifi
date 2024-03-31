@@ -28,22 +28,24 @@ function Application() {
 
   function callLend() {
     console.log(ethers.parseEther(lendAmount?.toString() as string));
-    // writeContract({
-    //   address: contracts.USDT[chainId as ChainId] as Address,
-    //   abi: usdtABI,
-    //   functionName: "approve",
-    //   args: [
-    //     contracts.IndiFi[chainId as ChainId] as Address,
-    //     ethers.parseEther(lendAmount?.toString() as string),
-    //   ],
-    // });
-
     writeContract({
-      address: contracts.IndiFi[chainId as ChainId] as Address,
-      abi: indifyABI,
-      functionName: "lend",
-      args: [ethers.parseEther(lendAmount?.toString() as string)],
+      address: contracts.USDT[chainId as ChainId] as Address,
+      abi: usdtABI,
+      functionName: "approve",
+      args: [
+        contracts.IndiFi[chainId as ChainId] as Address,
+        ethers.parseEther(lendAmount?.toString() as string),
+      ],
     });
+
+    setTimeout(() => {
+      writeContract({
+        address: contracts.IndiFi[chainId as ChainId] as Address,
+        abi: indifyABI,
+        functionName: "lend",
+        args: [ethers.parseEther(lendAmount?.toString() as string)],
+      });
+    }, 7000);
   }
   function callBorrow() {
     writeContract({
@@ -55,11 +57,22 @@ function Application() {
   }
   function callRepay() {
     writeContract({
-      address: contracts.IndiFi[chainId as ChainId] as Address,
-      abi: indifyABI,
-      functionName: "repay",
-      args: [ethers.parseEther(repayAmount?.toString() as string)],
+      address: contracts.BorrowerToken[chainId as ChainId] as Address,
+      abi: usdtABI,
+      functionName: "approve",
+      args: [
+        contracts.IndiFi[chainId as ChainId] as Address,
+        ethers.parseEther(lendAmount?.toString() as string),
+      ],
     });
+    setTimeout(() => {
+      writeContract({
+        address: contracts.IndiFi[chainId as ChainId] as Address,
+        abi: indifyABI,
+        functionName: "repay",
+        args: [ethers.parseEther(repayAmount?.toString() as string)],
+      });
+    }, 8000);
   }
   useEffect(() => {
     setInterval(() => {}, 3000);
